@@ -39,6 +39,9 @@ export default function LoginPage() {
                     if (data?.error) {
                         form.reset();
                         setError(data.error);
+                    } else {
+                        // Login successful, redirect to dashboard
+                        window.location.href = "/dashboard";
                     }
                 })
                 .catch(() => setError("Something went wrong"));

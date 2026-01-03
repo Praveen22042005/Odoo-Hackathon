@@ -11,12 +11,13 @@ export default async function TripLayout({
     params,
 }: {
     children: React.ReactNode;
-    params: { tripId: string };
+    params: Promise<{ tripId: string }>;
 }) {
     const session = await auth();
     if (!session) redirect("/login");
 
-    const trip = await getTripById(params.tripId);
+    const { tripId } = await params;
+    const trip = await getTripById(tripId);
     if (!trip) redirect("/dashboard");
 
     return (

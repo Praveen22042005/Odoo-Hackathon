@@ -51,7 +51,9 @@ export const getTrips = async () => {
         where: { userId: user.id },
         orderBy: { startDate: 'asc' },
         include: {
-            stops: true // Optional: if we need stop count for the card
+            _count: {
+                select: { stops: true }
+            }
         }
     });
 };

@@ -21,6 +21,7 @@ export default function DashboardLayout({
                             <Link href="/dashboard" className="hover:text-white transition-colors">Overview</Link>
                             <Link href="/dashboard/trips" className="hover:text-white transition-colors">My Trips</Link>
                             <Link href="/dashboard/explore" className="hover:text-white transition-colors">Explore</Link>
+                            <Link href="/dashboard/activities" className="hover:text-white transition-colors">Activities</Link>
                         </nav>
                         <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white" asChild>
                             <Link href="/dashboard/create">
