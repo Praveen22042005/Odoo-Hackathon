@@ -159,32 +159,107 @@ GlobeTrotter is a modern travel planning platform that helps you organize trips,
 ```
 globetrotter/
 ├── prisma/
-│   └── schema.prisma          # Database schema
-├── public/                    # Static assets
+│   └── schema.prisma                     # Database schema
+├── public/                               # Static assets
 ├── src/
-│   ├── actions/               # Server actions
-│   │   ├── activity.ts
-│   │   ├── budget.ts
-│   │   ├── trip.ts
-│   │   └── ...
-│   ├── app/                   # Next.js app router
-│   │   ├── (auth)/           # Auth pages
-│   │   ├── api/              # API routes
-│   │   ├── dashboard/        # Dashboard pages
-│   │   └── share/            # Public sharing
-│   ├── components/           # React components
+│   ├── auth.config.ts                    # Auth configuration
+│   ├── auth.ts                           # Auth setup
+│   ├── middleware.ts                     # Next.js middleware
+│   ├── routes.ts                         # Route definitions
+│   ├── actions/                          # Server actions
+│   │   ├── activity.ts                   # Activity actions
+│   │   ├── budget.ts                     # Budget actions
+│   │   ├── login.ts                      # Login action
+│   │   ├── register.ts                   # Registration action
+│   │   ├── settings.ts                   # Settings actions
+│   │   ├── stop.ts                       # Trip stop actions
+│   │   └── trip.ts                       # Trip actions
+│   ├── app/                              # Next.js app router
+│   │   ├── globals.css                   # Global styles
+│   │   ├── layout.tsx                    # Root layout
+│   │   ├── page.tsx                      # Home page
+│   │   ├── (auth)/                       # Auth group
+│   │   │   ├── login/
+│   │   │   │   └── page.tsx              # Login page
+│   │   │   └── signup/
+│   │   │       └── page.tsx              # Signup page
+│   │   ├── api/
+│   │   │   └── auth/
+│   │   │       └── [...nextauth]/
+│   │   │           └── route.ts          # NextAuth API route
+│   │   ├── dashboard/                    # Dashboard routes
+│   │   │   ├── layout.tsx                # Dashboard layout
+│   │   │   ├── page.tsx                  # Dashboard home
+│   │   │   ├── activities/
+│   │   │   │   └── page.tsx              # Activities page
+│   │   │   ├── create/
+│   │   │   │   └── page.tsx              # Create trip page
+│   │   │   ├── explore/
+│   │   │   │   └── page.tsx              # Explore page
+│   │   │   ├── profile/
+│   │   │   │   └── page.tsx              # Profile page
+│   │   │   └── trips/
+│   │   │       ├── page.tsx              # Trips list
+│   │   │       └── [tripId]/
+│   │   │           ├── layout.tsx        # Trip detail layout
+│   │   │           ├── page.tsx          # Trip detail page
+│   │   │           ├── budget/
+│   │   │           │   └── page.tsx      # Trip budget page
+│   │   │           └── settings/
+│   │   │               └── page.tsx      # Trip settings page
+│   │   └── share/
+│   │       └── [tripId]/
+│   │           └── page.tsx              # Public trip share page
+│   ├── components/                       # React components
+│   │   ├── Providers.tsx                 # Context providers
 │   │   ├── activities/
+│   │   │   ├── ActivityCard.tsx          # Activity card component
+│   │   │   └── ActivityFilters.tsx       # Activity filter component
 │   │   ├── dashboard/
+│   │   │   ├── AddToTripDialog.tsx       # Add to trip dialog
+│   │   │   ├── BudgetCharts.tsx          # Budget visualization
+│   │   │   ├── TripCard.tsx              # Trip card component
+│   │   │   └── UserNav.tsx               # User navigation
 │   │   ├── itinerary/
-│   │   └── ui/              # shadcn/ui components
-│   ├── data/                 # Data utilities
-│   ├── lib/                  # Shared utilities
-│   └── schemas/              # Zod validation schemas
-├── components.json
-├── next.config.ts
-├── package.json
-├── tailwind.config.ts
-└── tsconfig.json
+│   │   │   ├── AddActivityDialog.tsx     # Add activity dialog
+│   │   │   ├── AddStopDialog.tsx         # Add stop dialog
+│   │   │   └── CalendarView.tsx          # Calendar view component
+│   │   └── ui/                           # shadcn/ui components
+│   │       ├── avatar.tsx
+│   │       ├── badge.tsx
+│   │       ├── button.tsx
+│   │       ├── calendar.tsx
+│   │       ├── card.tsx
+│   │       ├── checkbox.tsx
+│   │       ├── dialog.tsx
+│   │       ├── dropdown-menu.tsx
+│   │       ├── form.tsx
+│   │       ├── input.tsx
+│   │       ├── label.tsx
+│   │       ├── popover.tsx
+│   │       ├── progress.tsx
+│   │       ├── select.tsx
+│   │       ├── switch.tsx
+│   │       ├── tabs.tsx
+│   │       └── textarea.tsx
+│   ├── data/                             # Data utilities
+│   │   ├── activities.ts                 # Activity data
+│   │   ├── trip.ts                       # Trip data utilities
+│   │   └── user.ts                       # User data utilities
+│   ├── lib/                              # Shared utilities
+│   │   ├── db.ts                         # Database client
+│   │   └── utils.ts                      # Utility functions
+│   └── schemas/                          # Zod validation schemas
+│       └── index.ts                      # Schema definitions
+├── components.json                       # shadcn/ui config
+├── eslint.config.mjs                     # ESLint configuration
+├── next-env.d.ts                         # Next.js TypeScript definitions
+├── next.config.ts                        # Next.js configuration
+├── package.json                          # Dependencies
+├── postcss.config.mjs                    # PostCSS configuration
+├── README.md                             # This file
+├── tailwind.config.ts                    # Tailwind CSS configuration
+└── tsconfig.json                         # TypeScript configuration
 ```
 
 ---
